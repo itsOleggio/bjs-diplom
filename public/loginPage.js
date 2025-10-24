@@ -3,8 +3,8 @@
 const user = new UserForm();
 
 user.loginFormCallback = (data) => {
-    ApiConnector.login({login: data.login, password: data.password}, (response) => {
-        if(response.success === true) {
+    ApiConnector.login({data}, (response) => {
+        if(response.success) {
             location.reload();
         }
         else {
@@ -14,8 +14,8 @@ user.loginFormCallback = (data) => {
 };
 
 user.registerFormCallback = (data) => {
-    ApiConnector.register({login: data.login, password: data.password}, (response) => {
-        if(response.success === true) {
+    ApiConnector.register({data}, (response) => {
+        if(response.success) {
             location.reload();
         } else {
             user.setRegisterErrorMessage(response.error)
